@@ -29,17 +29,42 @@ class App extends Component {
     super();
     this.state={
       input:'',
-      imageUrl:''
+      imageUrl:'',
+      box: {},
 
     }
   }
 
-  handleKeyPress = (event) =>{
-    if (event.key === 'Enter') {
-      console.log('do validate');
-    }
+  // handleKeyPress = (event) =>{
+  //   if (event.key === 'Enter') {
+  //     console.log('do validate');
+  //     }
       
-   }
+  //  }
+
+  calculateFaceLocation = (data) =>{
+
+    // console.log(data.outputs[0].data.regions[0].region_info.bounding_box);
+    const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+    // console.log(clarifaiFace);
+    const image = document.getElementById('inputimage');
+    const width = Number(image.width);
+    const height = Number(image.height);
+    console.log(width,height);
+    console.log(clarifaiFace.bottom_row);
+    return{
+      leftCol: clarifaiFace.left_col * width,
+      topRow: clarifaiFace.top_row * height,
+      rightCol: width - (clarifaiFace.right_col * width),
+      buttomRow: height - (clarifaiFace.bottom_row * height)
+    }
+  }
+
+  displayFaceBox = (box) => {
+    console.log(box);
+    this.setState({box: box})
+  }
+
 
   onInputChange = (event) =>{
     console.log(event.target.value);
@@ -52,16 +77,18 @@ class App extends Component {
     app.models.predict(
       "a403429f2ddf4b49b307e318f00e528b", 
       this.state.input)
-    .then(
-    function(response) {
+    .then(response => this.displayFaceBox (this.calculateFaceLocation(response)))
+    .catch(error => console.log(error))  
+    // function(response) {
       // do something with response
-      console.log(response)
-      console.log(response.outputs[0].data.regions[0].region_info.bounding_box);
-    },
-    function(err) {
+      // console.log(response)
+      // console.log(response.outputs[0].data.regions[0].region_info.bounding_box);
+       // this.calculateFaceLocation(response);
+    
+    // function(err) {
       // there was an error
-    }
-  );
+  
+  
 
 
   }
