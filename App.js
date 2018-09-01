@@ -101,6 +101,7 @@ class App extends Component {
          params={particlesOptions}
         />
         <Navigation/>
+        <Signin/>
         <Logo/>
         <Rank/>
         <ImageLinkForm 
