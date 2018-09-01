@@ -89,11 +89,13 @@ class App extends Component {
     
     // function(err) {
       // there was an error
-  
-  
-
-
   }
+  
+  onRouteChange = () => {
+    this.setState({route: 'home'});      
+  }
+
+  
 
   render() {
     return (
@@ -103,7 +105,7 @@ class App extends Component {
         />
         <Navigation/>
         {this.state.route === 'signin'
-        ? <Signin/>
+        ? <Signin onRouteChange={this.onRouteChange}/>
         : <div> <Logo/>
         <Rank/>
         <ImageLinkForm 

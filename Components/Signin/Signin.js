@@ -2,7 +2,7 @@ import React from 'react';
 import './Signin.css'
 // import './App.css';
 
-const Signin = () => {
+const Signin = ({onRouteChange}) => {
 	return(
 
 		<main className="pa4 black-80">
@@ -20,7 +20,12 @@ const Signin = () => {
 		      <label className="pa0 ma0 lh-copy f6 pointer"><input type="checkbox"/> Remember me</label>
 		    </fieldset>
 		    <div className="">
-		      <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in"/>
+		      <input
+		      onClick = {onRouteChange} 
+		      className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+		      type="submit" 
+		      value="Sign in"
+		      />
 		    </div>
 		    <div className="lh-copy mt3">
 		      <a href="#0" className="f6 link dim black db">Register</a>
