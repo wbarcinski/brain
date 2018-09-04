@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navigation from './Components/Navigation/Navigation';
 import Signin from './Components/Signin/Signin';
+import Register from './Components/Register/Register';
 import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
 import Logo from './Components/Logo/Logo';
 import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm';
@@ -104,19 +105,24 @@ class App extends Component {
          params={particlesOptions}
         />
         <Navigation onRouteChange={this.onRouteChange}/>
+
+        {this.state.route === 'home'
+        ? <div> 
+            <Logo/>
+            <Rank/>
+            <ImageLinkForm 
+              onInputChange={this.onInputChange} 
+              onButtonSubmit={this.onButtonSubmit}
+            />
+            <FaceRecognition
+              box={this.state.box}
+              imageUrl = {this.state.imageUrl}
+            />
+          </div> 
+        :(  
         {this.state.route === 'signin'
         ? <Signin onRouteChange={this.onRouteChange}/>
-        : <div> <Logo/>
-        <Rank/>
-        <ImageLinkForm 
-          onInputChange={this.onInputChange} 
-          onButtonSubmit={this.onButtonSubmit}
-        />
-        <FaceRecognition
-          box={this.state.box}
-          imageUrl = {this.state.imageUrl}
-        />
-        </div>
+        : 
       }
       </div>
     );
