@@ -21,7 +21,7 @@ const Register = ({onRouteChange}) => {
 		        <label className="db fw6 lh-copy f6" for="password">Password</label>
 		        <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password"/>
 		      </div>
-		      <label className="pa0 ma0 lh-copy f6 pointer"><input type="checkbox"/> Remember me</label>
+		      {/*<label className="pa0 ma0 lh-copy f6 pointer"><input type="checkbox"/> Remember me</label>*/}
 		    </fieldset>
 		    <div className="">
 		      <input
