@@ -120,9 +120,11 @@ class App extends Component {
             />
           </div> 
         :(  
-        {this.state.route === 'signin'
+        this.state.route === 'signin'
         ? <Signin onRouteChange={this.onRouteChange}/>
-        : 
+        : <Register onRouteChange={this.onRouteChange}/>
+        )
+         
       }
       </div>
     );
