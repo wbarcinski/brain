@@ -39,6 +39,13 @@ class App extends Component {
     }
   }
 
+  // componentDidMount(){
+  //   fetch('http://localhost:3001/')
+  //   .then(response => response.json())
+  //   .then(console.log)
+
+  // }
+
   // handleKeyPress = (event) =>{
   //   if (event.key === 'Enter') {
   //     console.log('do validate');
