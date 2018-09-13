@@ -30,8 +30,14 @@ class Signin extends React.Component{
 			})
 
 		})
+			.then(response => response.json())
+			.then(data => {
+				if(data === 'success'){
+					this.props.onRouteChange('home')
+				}
+			})
 		// console.log("from onSubmitSignIn ",this.state);
-		this.props.onRouteChange('home');
+		// this.props.onRouteChange('home');
 	}
 
 

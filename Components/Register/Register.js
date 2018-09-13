@@ -2,7 +2,15 @@ import React from 'react';
 // import './Register.css'
 // import './App.css';
 
-const Register = ({onRouteChange}) => {
+class Register extends React.Component{
+	constructor(props){
+		super(props);
+		this.state={
+			
+		}
+
+	}
+
 	return(
 
 		<main className="pa4 black-80">
