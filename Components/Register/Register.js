@@ -31,14 +31,15 @@ class Register extends React.Component{
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
-				email: this.state.signInEmail,
-				password: this.state.signInPassword
+				email: this.state.email,
+				password: this.state.password,
+				name: this.state.name
 
 			})
 
 		})
 			.then(response => response.json())
-			.then(data => {
+			.then(user => {
 				if(data === 'success'){
 					this.props.onRouteChange('home')
 				}
@@ -49,7 +50,7 @@ class Register extends React.Component{
 
 
 	render(){
-		const {onRouteChange} = this.props;
+		// const {onRouteChange} = this.props;
 		return(
 
 			<main className="pa4 black-80">
