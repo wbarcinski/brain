@@ -140,7 +140,7 @@ class App extends Component {
     
     // function(err) {
       // there was an error
-  }
+  // }
   
   onRouteChange = (route) => {
     if (route === 'signout'){
