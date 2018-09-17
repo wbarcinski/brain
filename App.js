@@ -27,8 +27,8 @@ const particlesOptions = {
 }
 
 class App extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state={
       input:'',
       imageUrl:'',
@@ -101,12 +101,11 @@ class App extends Component {
     this.setState({input: event.target.value})    
   }
 
-  onButtonSubmit =() => {
+  onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input })
     console.log('click');
-    app.models.predict(
-      "a403429f2ddf4b49b307e318f00e528b", 
-      this.state.input)
+    app.models.predict("a403429f2ddf4b49b307e318f00e528b", this.state.input)
+    
     .then(response => {
 
         if(response){
@@ -163,7 +162,10 @@ class App extends Component {
         {this.state.route === 'home'
         ? <div> 
             <Logo/>
-            <Rank/>
+            <Rank
+              name={this.state.user.name}
+              entries={this.state.user.entries}
+            />
             <ImageLinkForm 
               onInputChange={this.onInputChange} 
               onButtonSubmit={this.onButtonSubmit}
@@ -175,7 +177,7 @@ class App extends Component {
           </div> 
         :(  
         this.state.route === 'signin'
-        ? <Signin onRouteChange={this.onRouteChange}/>
+        ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
         : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
         )
          
